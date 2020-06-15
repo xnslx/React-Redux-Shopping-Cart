@@ -18,12 +18,13 @@ export const initialState = {
             price: '$19.99',
             stock: '5'
         }
-    ]
+    ],
+    totalPrice: ''
 }
 
 const reducer = (state= initialState, action) => {
     return {
-
+        
     }
 };
 

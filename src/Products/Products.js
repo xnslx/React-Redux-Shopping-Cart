@@ -13,8 +13,9 @@ const Products = () => {
                         <li><strong>Product Name:</strong> {pdct.name}</li>
                         <li><strong>Product Price:</strong> {pdct.price}</li>
                         <li><strong>Product Stock: </strong>{pdct.stock}</li>
-                        <button>+</button>
                         <button>-</button>
+                        <span>Number:</span>
+                        <button>+</button>
                     </ul>
                 )
             })}
