@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {initialState} from '../Reducer/Reducer';
 import {connect} from 'react-redux';
 
@@ -6,11 +6,16 @@ import {connect} from 'react-redux';
 const Products = (props) => {
     console.log(props)
     console.log(initialState)
-    const products = initialState;
-    const [state, setState] = useState('')
-    const changeHandler = e => {
-        setState(e.target.value)
-    }
+    const {products} = initialState;
+
+
+    // const removeItems = (prdtId) => {
+    //     return props.onRemoveItems;
+    // }
+
+    // const addItems = (prdtId) => {
+    //     return props.onAddItems;
+    // }
     return (
         <div>
             {products.map(pdct => {
@@ -19,9 +24,9 @@ const Products = (props) => {
                         <li><strong>Product Name:</strong> {pdct.name}</li>
                         <li><strong>Product Price:</strong> {pdct.price}</li>
                         <li><strong>Product Stock: </strong>{pdct.stock}</li>
-                        <button onClick={props.onProductsDecrease}>-</button>
-                        <input type="number" value={pdct.value} onChange={changeHandler}/>
-                        <button onClick={props.onProductsIncrease}>+</button>
+                        <button onClick={props.onRemoveItems}>-</button>
+                        <span>{props.cts}</span>
+                        <button onClick={props.onAdditems}>+</button>
                     </ul>
                 )
             })}
@@ -29,18 +34,18 @@ const Products = (props) => {
     )
 };
 
-export const mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
-        pdts: state.products
+        cts:state.counter
     }
 };
 
 
-export const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
-        onProductsIncrease: (prdtId) => dispatch({type:'INCREASE', id: prdtId}),
-        onProductsDecrease: (prdtId) => dispatch({type:'DECREASE', id:prdtId})
+        onAddItems: (prdtId) => dispatch({type:'INCREASE', id: prdtId}),
+        onRemoveItems: (prdtId) => dispatch({type:'DECREASE', id:prdtId})
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps,mapDispatchToProps)(Products);
