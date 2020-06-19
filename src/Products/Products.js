@@ -5,16 +5,6 @@ import {connect} from 'react-redux';
 
 const Products = props => {
     // console.log(props)
-
-    const additemsHandler = (id)=> {
-        console.log(id)
-      props.onAddItems(id)
-    };
-
-    const removeItemsHandler= (id)=> {
-      props.onRemoveItems(id)
-      // console.log(productId);
-    };
   return (
     <div>
       {props.productList.map(pdct => {
@@ -30,9 +20,9 @@ const Products = props => {
               <strong>Product Stock: </strong>
               {pdct.stock}
             </li>
-            <button onClick={() =>removeItemsHandler(pdct.id)}>-</button>
+            <button onClick={() =>props.onRemoveItems(pdct.id)}>-</button>
             <span>{pdct.counter}</span>
-            <button onClick={() =>additemsHandler(pdct.id)}>+</button>
+            <button onClick={() =>props.onAddItems(pdct.id)}>+</button>
           </ul>
         );
       })}
