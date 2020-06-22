@@ -20,9 +20,10 @@ const Products = props => {
               <strong>Product Stock: </strong>
               {pdct.stock}
             </li>
-            <button onClick={() =>props.onRemoveItems(pdct.id)}>-</button>
+            {/* <button onClick={() =>props.onRemoveItems(pdct.id)}>-</button>
             <span>{pdct.counter}</span>
-            <button onClick={() =>props.onAddItems(pdct.id)}>+</button>
+            <button onClick={() =>props.onAddItems(pdct.id)}>+</button> */}
+            <button onClick={() => props.onAddItems(pdct.id)}>Add to the cart</button>
           </ul>
         );
       })}
@@ -39,8 +40,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     // console.log(dispatch)
   return {
-    onAddItems: productId => dispatch({ type: "INCREASE", id: productId }),
-    onRemoveItems: productId => dispatch({ type: "DECREASE", id: productId })
+    onAddItems: productId => dispatch({ type: "ADD", id: productId }),
+    // onRemoveItems: productId => dispatch({ type: "DECREASE", id: productId })
   };
 };
 
