@@ -1,4 +1,5 @@
 import React from 'react';
+import {v4} from 'uuid'
 import {connect }from 'react-redux';
 
 const CheckOut = props => {
@@ -7,7 +8,7 @@ const CheckOut = props => {
         <h5>Your Cart:{
             props.shoppingCart.map(cart => {
                 return (
-                    <ul key={cart.id}>
+                    <ul key={v4()} style={{listStyle:'none'}}>
                         <li>{cart.name}</li>
                     </ul>
                 )
@@ -20,7 +21,7 @@ const CheckOut = props => {
   };
   
   const mapStaateToProps = state => {
-      console.log(state)
+      console.log('state', state)
     return {
       totalPrice: state.price,
       shoppingCart:state.cart
