@@ -37,6 +37,12 @@ const initialState = {
             cart:state.cart.concat(addedProduct),
             price: newTotal
         }
+        case "RESET":
+            return {
+                ...state,
+                cart:[],
+                price:0
+            }
       case "INCREASE":
         return {
           ...state,

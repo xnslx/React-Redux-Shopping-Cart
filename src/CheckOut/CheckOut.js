@@ -15,17 +15,24 @@ const CheckOut = props => {
             })
         }</h5>
         <h4>Total Price:{props.totalPrice}</h4>
-        <button>Checkout</button>
+        <button onClick={() => props.onClear()}>Checkout</button>
       </div>
     );
   };
   
-  const mapStaateToProps = state => {
+  const mapStateToProps = state => {
       console.log('state', state)
     return {
       totalPrice: state.price,
       shoppingCart:state.cart
     };
   };
+
+  const mapDispatchToProps = dispatch => {
+      console.log(dispatch)
+      return {
+          onClear :() => dispatch({type:"RESET"})
+      }
+  }
   
-  export default connect(mapStaateToProps)(CheckOut);
+  export default connect(mapStateToProps,mapDispatchToProps)(CheckOut);
