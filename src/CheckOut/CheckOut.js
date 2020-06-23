@@ -5,7 +5,7 @@ import {connect }from 'react-redux';
 const CheckOut = props => {
     return (
       <div>
-        <h5>Your Cart:{
+        <h5>Your Cart:{props.shoppingCart.length === 0?'Add some products' :
             props.shoppingCart.map(cart => {
                 return (
                     <ul key={v4()} style={{listStyle:'none'}}>
