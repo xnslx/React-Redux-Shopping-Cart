@@ -5,11 +5,11 @@ import {connect }from 'react-redux';
 const CheckOut = props => {
     return (
       <div>
-        <h5>Your Cart:{props.shoppingCart.length === 0?'Add some products' :
-            props.shoppingCart.map(cart => {
+        <h5>Your Cart:{props.products.length === 0? 'Add some products' :
+            props.products.map(cart => {
                 return (
                     <ul key={v4()} style={{listStyle:'none'}}>
-                        <li>{cart.name}</li>
+                        <li>{cart.name} {cart.counter}</li>
                     </ul>
                 )
             })
@@ -24,7 +24,8 @@ const CheckOut = props => {
       console.log('state', state)
     return {
       totalPrice: state.price,
-      shoppingCart:state.cart
+    //   shoppingCart:state.cart
+    products: state.products.filter(a => a.counter >0)
     };
   };
 
