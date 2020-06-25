@@ -42,7 +42,8 @@ const initialState = {
             addedCartProducts.splice(0, state.cart.length)
             return {
                 ...state,
-                cart: [],
+                products:state.products.map(product => ({...product, counter:0})),
+                cart: addedCartProducts,
                 price:0
             }
       case "INCREASE":

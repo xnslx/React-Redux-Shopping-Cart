@@ -16,7 +16,7 @@ const CheckOut = props => {
             })
         }</h5>
         <h4>Total Price:{props.totalPrice}</h4>
-        <button onClick={() => props.onClear()}>Checkout</button>
+        <button onClick={() => props.onClear(props.products)}>Checkout</button>
       </div>
     );
   };
