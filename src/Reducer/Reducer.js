@@ -21,7 +21,7 @@ const initialState = {
         case "ADD":
         let addedProduct = state.products.find(product => product.id=== action.id)
         let newTotal = state.price + addedProduct.price
-        console.log(addedProduct)
+        // console.log(addedProduct)
         return {
             ...state,
             products:state.products.map(product => {
@@ -38,9 +38,11 @@ const initialState = {
             price: newTotal
         }
         case "RESET":
+            let addedCartProducts = state.products.filter(a =>a.counter>0);
+            addedCartProducts.splice(0, state.cart.length)
             return {
                 ...state,
-                cart:[],
+                cart: [],
                 price:0
             }
       case "INCREASE":

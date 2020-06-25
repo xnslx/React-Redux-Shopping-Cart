@@ -6,8 +6,8 @@ const CheckOut = props => {
     console.log(props)
     return (
       <div>
-        <h5>Your Cart:{props.cart.length === 0? 'Add some products' :
-            props.cart.map(cart => {
+        <h5>Your Cart:{props.products.length === 0? 'Add some products' :
+            props.products.map(cart => {
                 return (
                     <ul key={v4()} style={{listStyle:'none'}}>
                         <li>{cart.name} {cart.counter}</li>
@@ -26,7 +26,7 @@ const CheckOut = props => {
     return {
       totalPrice: state.price,
     //   shoppingCart:state.cart
-    cart: state.products.filter(a => a.counter >0)
+    products: state.products.filter(a => a.counter >0)
     };
   };
 
